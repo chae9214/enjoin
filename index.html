@@ -28,6 +28,109 @@
 	<link href="css/stylish-portfolio.css" rel="stylesheet">
 	<link rel="stylesheet" href="bootswatch.less">
 	<link href="font-awesome.min.css" rel="stylesheet">
+	    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/holder.js"></script>
+	 <script src="jquery-1.10.2.js"></script>
+<script src="jquery-ui.js"></script>
+<!--<link rel="stylesheet" href="style.css">-->
+<script>
+$(function() {
+$( "#accordion" ).accordion({
+ heightStyle: "content",
+}, {collapsible: true},{header: "h3"});
+});
+
+
+/*
+* hoverIntent | Copyright 2011 Brian Cherne
+* http://cherne.net/brian/resources/jquery.hoverIntent.html
+* modified by the jQuery UI team
+*/
+$.event.special.hoverintent = {
+setup: function() {
+$( this ).bind( "mouseover", jQuery.event.special.hoverintent.handler );
+},
+teardown: function() {
+$( this ).unbind( "mouseover", jQuery.event.special.hoverintent.handler );
+},
+handler: function( event ) {
+var currentX, currentY, timeout,
+args = arguments,
+target = $( event.target ),
+previousX = event.pageX,
+previousY = event.pageY;
+function track( event ) {
+currentX = event.pageX;
+currentY = event.pageY;
+};
+function clear() {
+target
+.unbind( "mousemove", track )
+.unbind( "mouseout", clear );
+clearTimeout( timeout );
+}
+function handler() {
+var prop,
+orig = event;
+if ( ( Math.abs( previousX - currentX ) +
+Math.abs( previousY - currentY ) ) < 7 ) {
+clear();
+event = $.Event( "hoverintent" );
+for ( prop in orig ) {
+if ( !( prop in event ) ) {
+event[ prop ] = orig[ prop ];
+}
+}
+// Prevent accessing the original event since the new event
+// is fired asynchronously and the old event is no longer
+// usable (#6028)
+delete event.originalEvent;
+target.trigger( event );
+} else {
+previousX = currentX;
+previousY = currentY;
+timeout = setTimeout( handler, 100 );
+}
+}
+timeout = setTimeout( handler, 100 );
+target.bind({
+mousemove: track,
+mouseout: clear
+});
+}
+};
+<!--<link rel="stylesheet" href="style.css">-->
+
+ $(function() {
+$( "#dialog" ).dialog({ resizable: false,
+autoOpen: false,
+modal: true,
+buttons: {
+"Report Event": function() {
+$( this ).dialog( "close" );
+},
+Cancel: function() {
+$( this ).dialog( "close" );
+}
+}
+});
+$( "#opener" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+$( "#opener1" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+$( "#opener2" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+$( "#opener3" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+});
+ $(function() {
+$( "#menu" ).menu();
+});
+</script>
   </head>
 <style>
 .ui-menu { width: 150px; }
@@ -84,6 +187,7 @@
 	
 </body>
 <body>
+
 <div id="accordion" class = "accordion2 col-lg-9">
 <h4 ><p></p>	Event <span class="navbar-right">Reputation</span></h4><div></div>
 
@@ -125,19 +229,25 @@
 
             All of them Otakus out there, havn’t not been in to a maid café before? Well today we are going to make your dream come true. You know you don’t want to miss out our maid café event, everyone is welcome. The event is going to be located in SF room 3300.
 			<div>
-       <div class="btn-group navbar-right">
+       
 	   
-
+	<button class="btn btn-primary">More Details</button>
+	<div class="btn-group navbar-right">
     <button class="btn btn-success">Add to My Events</button>
+	
+	
     <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
+	<span class="caret"></span>
+	</button>
+    
+	<ul class="dropdown-menu" role="menu">
     <li><a href = "#"> Add To Rep Points</a></li>
     </ul>
+    
+    
     </div>
 				<div class="btn-group navbar-right">
-    <button class="btn btn-danger" id="opener2">Report Event</button>
+    <button class="btn btn-danger" id="opener3">Report Event</button>
 	</div>
 	</div>
 </p>
@@ -149,19 +259,25 @@
 Diamond-dusted self-portraits and performance art by AA Bronson. Portraits by Robert Giard. In the wake of the AIDS crisis, a photographer celebrates gay and lesbian literary figures. 
 
 			<div>
-       <div class="btn-group navbar-right">
+       
 	   
-
+	<button class="btn btn-primary">More Details</button>
+	<div class="btn-group navbar-right">
     <button class="btn btn-success">Add to My Events</button>
+	
+	
     <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
+	<span class="caret"></span>
+	</button>
+    
+	<ul class="dropdown-menu" role="menu">
     <li><a href = "#"> Add To Rep Points</a></li>
     </ul>
+    
+    
     </div>
 				<div class="btn-group navbar-right">
-    <button class="btn btn-danger" id="opener1">Report Event</button>
+    <button class="btn btn-danger" id="opener3">Report Event</button>
 	</div>
 	</div>
 </p>
@@ -193,19 +309,25 @@ cppptoronto@gmail.com
 Visit our website: <p>
 individual.utoronto.ca/koga/children.html<p>
 			<div>
-       <div class="btn-group navbar-right">
+       
 	   
-
+	<button class="btn btn-primary">More Details</button>
+	<div class="btn-group navbar-right">
     <button class="btn btn-success">Add to My Events</button>
+	
+	
     <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
+	<span class="caret"></span>
+	</button>
+    
+	<ul class="dropdown-menu" role="menu">
     <li><a href = "#"> Add To Rep Points</a></li>
     </ul>
+    
+    
     </div>
 				<div class="btn-group navbar-right">
-    <button class="btn btn-danger" id="opener">Report Event</button>
+    <button class="btn btn-danger" id="opener3">Report Event</button>
 	</div>
 	</div>
 </p>
@@ -257,10 +379,7 @@ individual.utoronto.ca/koga/children.html<p>
 	
   
 	
-    <script src="dist/js/bootstrap.min.js"></script>
-    <script src="assets/js/holder.js"></script>
-	 <script src="jquery-1.10.2.js"></script>
-<script src="jquery-ui.js"></script>
+
 <script>
 $(document).ready(function(){
   $("part").hover(function(){
@@ -361,9 +480,7 @@ $( "#opener3" ).click(function() {
 $( "#dialog" ).dialog( "open" );
 });
 });
- $(function() {
-$( "#menu" ).menu();
-});
+
 </script>
   <script>
     $(function() {
