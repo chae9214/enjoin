@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>EnJoin</title>
+
+<link rel="stylesheet" href="jquery-ui.css">
+<script src="jquery-1.10.2.js"></script>
+<script src="jquery-ui.js"></script>
+<!--<link rel="stylesheet" href="style.css">-->
+<script>
+$(function() {
+$( "#accordion" ).accordion({
+ heightStyle: "content",
+}, {collapsible: true},{header: "h3"});
+});
+
+
+/*
+* hoverIntent | Copyright 2011 Brian Cherne
+* http://cherne.net/brian/resources/jquery.hoverIntent.html
+* modified by the jQuery UI team
+*/
+$.MyEvent.special.hoverintent = {
+setup: function() {
+$( this ).bind( "mouseover", jQuery.MyEvent.special.hoverintent.handler );
+},
+teardown: function() {
+$( this ).unbind( "mouseover", jQuery.MyEvent.special.hoverintent.handler );
+},
+handler: function( MyEvent ) {
+var currentX, currentY, timeout,
+args = arguments,
+target = $( MyEvent.target ),
+previousX = MyEvent.pageX,
+previousY = MyEvent.pageY;
+function track( MyEvent ) {
+currentX = MyEvent.pageX;
+currentY = MyEvent.pageY;
+};
+function clear() {
+target
+.unbind( "mousemove", track )
+.unbind( "mouseout", clear );
+clearTimeout( timeout );
+}
+function handler() {
+var prop,
+orig = MyEvent;
+if ( ( Math.abs( previousX - currentX ) +
+Math.abs( previousY - currentY ) ) < 7 ) {
+clear();
+MyEvent = $.MyEvent( "hoverintent" );
+for ( prop in orig ) {
+if ( !( prop in MyEvent ) ) {
+MyEvent[ prop ] = orig[ prop ];
+}
+}
+// PrMyEvent accessing the original MyEvent since the new MyEvent
+// is fired asynchronously and the old MyEvent is no longer
+// usable (#6028)
+delete MyEvent.originalMyEvent;
+target.trigger( MyEvent );
+} else {
+previousX = currentX;
+previousY = currentY;
+timeout = setTimeout( handler, 100 );
+}
+}
+timeout = setTimeout( handler, 100 );
+target.bind({
+mousemove: track,
+mouseout: clear
+});
+}
+};
+
+ $(function() {
+$( "#dialog" ).dialog({ resizable: false,
+autoOpen: false,
+modal: true,
+buttons: {
+"Report MyEvent": function() {
+$( this ).dialog( "close" );
+},
+Cancel: function() {
+$( this ).dialog( "close" );
+}
+}
+});
+$( "#opener" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+$( "#opener1" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+$( "#opener2" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+$( "#opener3" ).click(function() {
+$( "#dialog" ).dialog( "open" );
+});
+});
+ $(function() {
+$( "#menu" ).menu();
+});
+</script>
+    <!-- Bootstrap core CSS -->
+
+    <link href="bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="dist/css/carousel.css" rel="stylesheet">
+	<link href="css/stylish-portfolio.css" rel="stylesheet">
+	<link rel="stylesheet" href="bootswatch.less">
+	<link href="font-awesome.min.css" rel="stylesheet">
+  </head>
+<style>
+.ui-menu { width: 150px; }
+</style>
+
+<!-- NAVBAR
+================================================== -->   
+<body>
+<div class="modal-dialog" id="dialog" title="Report MyEvent">
+</div>
+<div class="navbar navbar-default">
+
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <img src="logo.png" href="#" height = '60'></img>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+      </li>
+    </ul>
+	<div class="input-group col-lg-3 navbar-right">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search</button>
+      </span>
+    </div><!-- /input-group -->
+	
+  </div>
+</div>
+</body>
+<body>
+
+	<!--<p align = 'left'>
+	<a href= "signup.html" class="btn btn-lg btn-primary">Create MyEvent</a>
+		  <p align ='right'> 
+	<a href= "signup.html" class="btn btn-default">Create Account</a>
+	</p>
+	<p></p>-->
+	
+	<form class="navbar-form navbar-right">
+		  <!--<input class="form-control col-lg-8" placeholder="Username" type="text">
+      <input class="form-control col-lg-8" placeholder="Password" type="text">-->
+		<p>
+		<font size = > Welcome Yokatta!</font>
+		</p>
+	  <button type="submit"class="btn btn-default">Logout</button> <button type="submit"class="btn btn-default">Sign In With a Different Account</button>
+    </form>
+	<div align="left">
+	<button type= "submit" class="btn btn-lg">Back To Main Page</a>
+	</div>
+</body>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Dates in other months</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true
+    });
+  });
+  </script>
+</head>
+<body>
+ 
+<b align = 'center'>Select By Date: <input type="text" id="datepicker"></b>
+ 
+ 
+</body>
+
+<div class = 'navbar-right'>
+<br> <br>
+<h4>Filter</h4>
+<ul id="menu">
+<li>Distance
+<ul>
+<li>Within 5 km</li>
+<li>Within 15 km</li>
+<li>Within 25 km</li>
+<li>Custom...</li>
+</ul>
+</li>
+<li>Reputation
+<ul>
+<li>Top 10%</li>
+<li>Top 25%</li>
+<li>Top 50%</li>
+<li>Custom...</li>
+</ul>
+</li>
+<li>Popular Tags
+<ul>
+<li>League sucks ass</li>
+<li>Dota Rulez</li>
+<li>Math</li>
+<li>Custom...</li>
+</ul>
+</li>
+</div>
+</body>
+	 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	
+  
+	
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/holder.js"></script>
+	 
+<script>
+$(document).ready(function(){
+  $("part").hover(function(){
+    $("part").css("background-color","yellow");
+    },function(){
+    $("part").css("background-color","pink");
+  });
+});
+</script>
+  <script>
+    $(function() {
+        $('a[href*=#]:not([href=#myCarousel])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+              || location.hostname == this.hostname) {
+
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+		})
+    </script>
+  </body>
+</html>
