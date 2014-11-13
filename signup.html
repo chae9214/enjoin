@@ -10,17 +10,185 @@
     <title>EnJoin</title>
 
 <link rel="stylesheet" href="jquery-ui.css">
-<script src="jquery-1.10.2.js"></script>
+
+<!--<link rel="stylesheet" href="style.css">-->
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="dist/css/carousel.css" rel="stylesheet">
+  <link href="css/stylish-portfolio.css" rel="stylesheet">
+  <link rel="stylesheet" href="bootswatch.less">
+  <link href="font-awesome.min.css" rel="stylesheet">
+  </head>
+<style>
+.ui-menu { width: 150px; }
+</style>
+
+<!-- NAVBAR
+================================================== -->   
+<body>
+  <div class="modal-dialog" id="dialog" title="Create Account">
+    Thank you for signing up!
+  </div>
+  <div class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="index.html">
+    <img src="logo.png" href="#" height = '60'></img>
+  </a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <div class="input-group col-lg-3 navbar-right">
+        <input type="text" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Search</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+
+<body>
+  <p align="right">
+    <a href= "index.html" class="btn btn-default">Back to Main Page</a> &nbsp;
+  </p>
+  <form class="form-horizontal">
+    <fieldset>
+      <!--FIRST BLOCK-->
+      <legend><h4>&nbsp;&nbsp;Create Account</h4></legend>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Username</label>
+        <div class="col-lg-3">
+          <input class="form-control" type="text" placeholder="Username" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-3">
+          <input class="form-control" type="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2 control-label">Confirm Password</label>
+        <div class="col-lg-3">
+          <input class="form-control" type="password" placeholder="Re-enter Password">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <div class="col-lg-10 col-lg-offset-2">
+    <br />
+    <button type="submit" class="btn btn-lg btn-primary" id="opener">Sign Up</button> &nbsp;
+    <a type="button" class = "btn btn-default" href="index.html">Cancel</a>
+  </div>
+</body>
+   
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  
+  
+  
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/holder.js"></script>
+   <script src="jquery-1.10.2.js"></script>
 <script src="jquery-ui.js"></script>
-<link rel="stylesheet" href="style.css">
 <script>
+$(document).ready(function(){
+  $("part").hover(function(){
+    $("part").css("background-color","yellow");
+    },function(){
+    $("part").css("background-color","pink");
+  });
+});
+$(function() {
+$( "#accordion" ).accordion({
+ heightStyle: "content",
+}, {collapsible: true},{header: "h3"});
+});
+
+
+/*
+* hoverIntent | Copyright 2011 Brian Cherne
+* http://cherne.net/brian/resources/jquery.hoverIntent.html
+* modified by the jQuery UI team
+*/
+$.event.special.hoverintent = {
+setup: function() {
+$( this ).bind( "mouseover", jQuery.event.special.hoverintent.handler );
+},
+teardown: function() {
+$( this ).unbind( "mouseover", jQuery.event.special.hoverintent.handler );
+},
+handler: function( event ) {
+var currentX, currentY, timeout,
+args = arguments,
+target = $( event.target ),
+previousX = event.pageX,
+previousY = event.pageY;
+function track( event ) {
+currentX = event.pageX;
+currentY = event.pageY;
+};
+function clear() {
+target
+.unbind( "mousemove", track )
+.unbind( "mouseout", clear );
+clearTimeout( timeout );
+}
+function handler() {
+var prop,
+orig = event;
+if ( ( Math.abs( previousX - currentX ) +
+Math.abs( previousY - currentY ) ) < 7 ) {
+clear();
+event = $.Event( "hoverintent" );
+for ( prop in orig ) {
+if ( !( prop in event ) ) {
+event[ prop ] = orig[ prop ];
+}
+}
+// Prevent accessing the original event since the new event
+// is fired asynchronously and the old event is no longer
+// usable (#6028)
+delete event.originalEvent;
+target.trigger( event );
+} else {
+previousX = currentX;
+previousY = currentY;
+timeout = setTimeout( handler, 100 );
+}
+}
+timeout = setTimeout( handler, 100 );
+target.bind({
+mousemove: track,
+mouseout: clear
+});
+}
+};
+
  $(function() {
 $( "#dialog" ).dialog({ resizable: false,
 autoOpen: false,
 modal: true,
 buttons: {
-"Ok": function() {
-document.getElementById("AccountForm").reset();
+"Great!": function() {
+$( this ).dialog( "close" );
+},
+Cancel: function() {
 $( this ).dialog( "close" );
 }
 }
@@ -38,114 +206,8 @@ $( "#opener3" ).click(function() {
 $( "#dialog" ).dialog( "open" );
 });
 });
-</script>
-
-    <!-- Bootstrap core CSS -->
-
-    <link href="bootstrap.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom styles for this template -->
-    <link href="dist/css/carousel.css" rel="stylesheet">
-	<link href="css/stylish-portfolio.css" rel="stylesheet">
-	<link rel="stylesheet" href="bootswatch.less">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  </head>
-  <style>
-  h1 {color:white;}
-  </style>
-  
-  <!-- NAVBAR
-================================================== -->   
-<body>
-<div class="modal-dialog" id="dialog" title="Create Account">
-<p>Your account has been created.</p>
-<b>Please verify your email within the next 24 hours with the verification email that was sent to your account.</b>
-</div>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<div class="navbar navbar-default">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    
-    <img src="logo.png" href="#" height = '60'></img>
-  </div>
-  <div class="navbar-collapse collapse navbar-responsive-collapse">
-    <ul class="nav navbar-nav">
-    </ul>
-      </li>
-	<div class="input-group col-lg-3 navbar-right">
-      <input type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Search</button>
-      </span>
-    </div>
-	
-  </div>
-</div>
-<form class="form-horizontal" id="AccountForm">
-  <fieldset>
-    <legend>Sign Up Page</legend>
-	<a href= "index.html" class="btn btn-default">Back to Main Page</a>
-	<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div> OR
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-      <div class="col-lg-5">
-        <input class="form-control" id="inputEmail" placeholder="Email" type="text">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-      <div class="col-lg-3">
-        <input class="form-control" id="inputPassword" placeholder="Password" type="password">
-      </div>
-    </div>
-     <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label"> Confirm Password</label>
-      <div class="col-lg-3">
-        <input class="form-control" id="inputPassword" placeholder="Password" type="password">
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="button" class="btn" id="opener">Create Account</button>
-      </div>
-    </div>
-  </fieldset>
-</form>
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-	
-  
-	
-    <script src="dist/js/bootstrap.min.js"></script>
-    <script src="assets/js/holder.js"></script>
-	 
-<script>
-$(document).ready(function(){
-  $("part").hover(function(){
-    $("part").css("background-color","yellow");
-    },function(){
-    $("part").css("background-color","pink");
-  });
+ $(function() {
+$( "#menu" ).menu();
 });
 </script>
   <script>
@@ -164,7 +226,6 @@ $(document).ready(function(){
             }
           }
         });
-		})
-    </script>
-  </body>
+    })
+  </script>
 </html>
