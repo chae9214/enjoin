@@ -25,9 +25,9 @@
 
     <!-- Custom styles for this template -->
     <link href="dist/css/carousel.css" rel="stylesheet">
-	<link href="css/stylish-portfolio.css" rel="stylesheet">
-	<link rel="stylesheet" href="bootswatch.less">
-	<link href="font-awesome.min.css" rel="stylesheet">
+  <link href="css/stylish-portfolio.css" rel="stylesheet">
+  <link rel="stylesheet" href="bootswatch.less">
+  <link href="font-awesome.min.css" rel="stylesheet">
   </head>
 <style>
 .ui-menu { width: 150px; }
@@ -36,8 +36,8 @@
 <!-- NAVBAR
 ================================================== -->   
 <body>
-  <div class="modal-dialog" id="dialog" title="Create Event">
-    Your event was successfully created!
+  <div class="modal-dialog" id="dialog" title="Report Event">
+    <p>Are you sure you want to report this event?</p>
   </div>
   <div class="navbar navbar-default">
     <div class="navbar-header">
@@ -46,16 +46,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="indexSigned.html">
+      <a href="index.html">
     <img src="logo4.jpg" href="#" height = '150'></img>
   </a>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-      <div class="input-group navbar-right">
-      <br />
-      <h4>Welcome <b>Drew Zhao</b>!&nbsp;&nbsp;&nbsp;</h4>
+      <div class="input-group col-lg-2 navbar-right">
+      <input class="form-control" placeholder="Username" type="text">
+      <input class="form-control" placeholder="Password" type="text">
       <p align="right">
-        <a class="btn btn-default" href="index.html">Logout</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-default" href="indexSigned.html">Login</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </p>
     </div>
     </div>
@@ -64,93 +64,65 @@
 
 <body>
   <p align="right">
-    <a href= "indexSigned.html" class="btn btn-default">Back to Main Page</a> &nbsp;
+    <a href= "index.html" class="btn btn-default">Back to Main Page</a> &nbsp;
   </p>
   <form class="form-horizontal">
     <fieldset>
       <!--FIRST BLOCK-->
-      <legend><h4>&nbsp;&nbsp;Create Event</h4></legend>
+      <legend>
+        <h3>&nbsp;&nbsp;Icebreaker Frosh Event&nbsp;<span class="badge">324 </span></h3>
+      </legend>
       <div class="form-group">
-        <label for="inputEmail" class="col-lg-2 control-label">Event Title</label>
-        <div class="col-lg-3">
-          <input class="form-control" placeholder="Title" type="text">
+        <label for="inputEmail" class="col-lg-2 control-label"><h5><b>Overview</b></h5></label>
+        <div class="col-lg-5">
+          <font size="3">Icebreaker event for first year students! Come to our icebreaker event, and meet more people that are in your program! 
+          We will have board games; free food and drinks feel free to come join us.</font>
         </div>
       </div>
       <div class="form-group">
-        <label for="inputEmail" class="col-lg-2 control-label">Password</label>
+        <label for="inputEmail" class="col-lg-2 control-label"><h5><b>Host</b></h5></label>
         <div class="col-lg-3">
-          <input id="yourText" type="password" disabled="disabled">
-          <input type="checkbox" id="yourBox"> &nbsp;Check to enable
+          <a href= ""><font size="3">Patrick Jones</font></a> <br />
+          <a href= ""><font size="3">Ignacio Cabala</font></a>
         </div>
       </div>
       <!--SECOND BLOCK-->
       <legend></legend>
       <div class="form-group">
-        <label for="inputEmail" class="col-lg-2 control-label">Date</label>
+        <label for="inputEmail" class="col-lg-2 control-label"><h5><b>Date</b></h5></label>
         <div class="col-lg-3">
-          <input class="form-control" type="date">
+          <font size="3">September 10<br />2014</font>
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword" class="col-lg-2 control-label">Time</label>
+        <label for="inputPassword" class="col-lg-2 control-label"><h5><b>Time</b></h5></label>
         <div class="col-lg-3">
-          <input class="form-control" type="time">
+          <font size="3">From 12:00 PM<br />To 5:00 PM</font>
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword" class="col-lg-2 control-label">Place</label>
+        <label for="inputPassword" class="col-lg-2 control-label"><h5><b>Place</b></h5></label>
         <div class="col-lg-3">
-          <input class="form-control" placeholder="Place">
-        </div>
-        <button class = "btn btn-warning">Pick on map</button>
-      </div>
-      <!--THIRD BLOCK-->
-      <legend></legend>
-      <div class="form-group">
-        <label for="inputEmail" class="col-lg-2 control-label">Description</label>
-        <div class="col-lg-5">
-          <input class="form-control" placeholder="Description">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputPassword" class="col-lg-2 control-label">Number of people</label>
-        <div class="col-lg-1">
-          <select class="form-control">
-            <option>Not limited</option>
-            <option> &#60; 10</option>
-            <option> &#60; 30</option>
-            <option> &#60; 50</option>
-            <option> &#60; 80</option>
-            <option> &#60; 100</option>
-            <option> &#60; 150</option>
-            <option> &#60; 500</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputPassword" class="col-lg-2 control-label">Ticket Price</label>
-        <div class="col-lg-1">
-          <input class="form-control" type="number">
+          <font size="3">Bahen Centre<br />Room 2270</font>
         </div>
       </div>
     </fieldset>
   </form>
-  <div class="col-lg-10 col-lg-offset-2">
-    <br />
-    <button type="submit" class="btn btn-lg btn-primary" id="opener">Create Event</button> &nbsp;
-    <a type="button" class = "btn btn-default" href="indexSigned.html">Cancel</a>
-  </div>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <iframe width="600" height="300" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=Bahen%20Centre%20for%20Information%20Technology%2C%20Saint%20George%20Street%2C%20Toronto%2C%20ON%2C%20Canada&key=AIzaSyC6nYPwYvOPGs9k4iFhRbMh6FHQH9M2a2g"></iframe>
+  
 </body>
-	 
+   
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-	
   
-	
+  
     <script src="dist/js/bootstrap.min.js"></script>
     <script src="assets/js/holder.js"></script>
-	 <script src="jquery-1.10.2.js"></script>
+   <script src="jquery-1.10.2.js"></script>
 <script src="jquery-ui.js"></script>
 <script>
 $(document).ready(function(){
@@ -231,7 +203,7 @@ $( "#dialog" ).dialog({ resizable: false,
 autoOpen: false,
 modal: true,
 buttons: {
-"Great!": function() {
+"Report Event": function() {
 $( this ).dialog( "close" );
 },
 Cancel: function() {
@@ -272,7 +244,7 @@ $( "#menu" ).menu();
             }
           }
         });
-		})
+    })
   </script>
   <script>
     document.getElementById('yourBox').onchange = function() {
